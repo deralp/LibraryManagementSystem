@@ -5,7 +5,7 @@ Developer PowerShell ekranında komutlar sırasıyla şunlardır:
 3- dotnet ef database update
 
 
-Kendimce projefe eksik olan yerler:
+Kendimce projede eksik olan yerler:
 1- password hash'lenmeden db ye kaydoluyor.
 2- password ve username validation.
 3- SpecFlow test senaryoları ve test.
