@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryManagementSystem.Features.Book
 {
-    [Authorize(Roles = "Admin, Librarian")]
+    [Authorize/*(Roles = "Admin, Librarian")*/]
     [ApiController]
     [Route("api/[controller]")]
     public class BookController
@@ -20,8 +20,7 @@ namespace LibraryManagementSystem.Features.Book
         [HttpPost("create")]
         public async Task<Create.Response> Create(Create.Request request)
         {
-
-            return await _mediator.Send(request);
+            return await _mediator.Send(request); 
         }
         [HttpPost("isavailable")]
         public async Task<IsAvailable.Response> IsAvailable(IsAvailable.Request request)
