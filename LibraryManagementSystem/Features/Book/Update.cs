@@ -54,7 +54,7 @@ namespace LibraryManagementSystem.Features
 
                 var authorList = new List<Author>();
 
-                var book = await _context.Books.Where(x => x.DeletedAt == null && x.Id == request.BookDto.Id).FirstOrDefaultAsync(cancellationToken);
+                var book = await _context.Books.Where(x => x.DeletedAt == null && x.Id == request.BookDto.Id).Include(x=>x.Authors).Include(x=>x.Types).FirstOrDefaultAsync(cancellationToken);
 
                 foreach (var authorId in request.BookDto.AuthorIds)
                 {
@@ -74,6 +74,9 @@ namespace LibraryManagementSystem.Features
                     bookTypeList.Add(bookType);
                 }
 
+
+
+
                 book.Authors = authorList;
                 book.HasSeries = request.BookDto.HasSeries;
                 book.Name = request.BookDto.Name;
@@ -85,6 +88,7 @@ namespace LibraryManagementSystem.Features
                 book.RemainNumberOfCopies = copyBookList.Count;
                 book.UpdatedAt = DateTime.UtcNow;
                 book.UpdatedBy = new Guid(userId);
+                
 
                 _context.Books.Update(book);
                 await _context.SaveChangesAsync(cancellationToken);

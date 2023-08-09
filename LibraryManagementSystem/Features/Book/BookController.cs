@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryManagementSystem.Features.Book
 {
-    [Authorize/*(Roles = "Admin, Librarian")*/]
+    [Authorize(Roles = "Admin, Librarian")]
     [ApiController]
     [Route("api/[controller]")]
     public class BookController
